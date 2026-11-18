@@ -1,0 +1,138 @@
+/* ==========================================================
+   Playful homepage theme: Comic Neue, pastel "clicky" buttons,
+   sticky sidebar, meteor shower in the background.
+   Change the colors in :root to re-skin everything.
+   ========================================================== */
+
+:root {
+  --text: #1f2937;
+  --muted: #6b7280;
+  --chip: #e6e6fa;        /* lavender label pills */
+  --purple: #c4b5fd;
+  --blue: #93c5fd;
+  --green: #86efac;
+  --yellow: #fde68a;
+  --pink: #f9a8d4;
+  --nav: #b8a9f5;
+}
+
+html { font-size: 0.925em; box-sizing: border-box; scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: "Comic Neue", "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#meteor-shower { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+
+/* ---------- layout ---------- */
+#page {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3em;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+aside { position: sticky; top: 2em; align-self: start; text-align: right; }
+#main { min-width: 0; max-width: 36rem; padding-bottom: 4rem; }
+
+.avatar {
+  width: 128px; height: 128px; margin: 8px 0 0 auto;
+  border-radius: 12px; background: var(--chip);
+  display: grid; place-items: center; font-size: 4rem;
+  overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+aside nav ul { list-style: none; padding: 0; margin: 1.5em 0 0; }
+aside nav li { margin: .6em 0; }
+aside nav a { color: var(--nav); font-weight: 700; text-decoration: none; }
+
+/* rainbow text on hover */
+.rainbow:hover {
+  background: linear-gradient(to right, #66f, #09f, #0f0, #f39, #66f) 0 0 / 500% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: rainbow 4s ease-in-out infinite;
+}
+@keyframes rainbow { 0%, 100% { background-position: 0 50%; } 50% { background-position: 100% 50%; } }
+
+/* ---------- type ---------- */
+h1 { font-size: 2em; margin: .4em 0 .2em; }
+h2 { font-size: 1.5em; margin: 1.6em 0 .6em; scroll-margin-top: 1em; }
+h3 { font-size: 1.17em; margin: .3em 0; }
+.subtitle { color: var(--muted); font-weight: 700; margin: 0 0 .8em; }
+a { color: #00e; }
+p { margin: .8em 0; }
+
+/* ---------- pills & buttons ---------- */
+.portal {
+  display: inline-block;
+  background: var(--chip);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 4px 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: .6em 0; }
+
+.clicky {
+  padding: 4px 8px 8px;
+  box-shadow: inset 0 -0.3em 0 rgba(0,0,0,.2);
+  transition: transform .08s, box-shadow .08s, filter .15s;
+  cursor: pointer;
+}
+.clicky:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.clicky:active { transform: translateY(2px); box-shadow: inset 0 -0.1em 0 rgba(0,0,0,.2); padding: 6px 8px 6px; }
+
+.code    { background: var(--purple); }
+.demo    { background: var(--blue); }
+.writeup { background: var(--green); }
+.misc    { background: var(--yellow); }
+.read    { background: var(--pink); }
+
+/* ---------- schedule-style rows ---------- */
+.rows { display: grid; grid-template-columns: auto 1fr; gap: 14px 18px; align-items: start; }
+.rows > .portal { justify-self: start; margin-top: 2px; text-align: center; min-width: 6.5em; }
+.row-body .title { margin: 0 0 6px; }
+.date { color: var(--muted); }
+.row-body .chips { margin: 0; }
+
+/* ---------- article (blog post pages) ---------- */
+.article h1 { margin-top: .6em; }
+.article pre {
+  background: #f5f3ff; border-radius: 8px; padding: 12px 14px;
+  overflow-x: auto; font-size: .9em;
+  box-shadow: inset 0 -0.3em 0 rgba(0,0,0,.06);
+}
+.article code { font-family: ui-monospace, Consolas, monospace; }
+.article :not(pre) > code { background: var(--chip); padding: 1px 5px; border-radius: 4px; }
+.article blockquote { margin: 1em 0; padding: 8px 14px; background: #fef9c3; border-radius: 8px; }
+.article img { max-width: 100%; border-radius: 8px; }
+
+footer.foot { margin-top: 3em; color: var(--muted); font-size: .9em; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 768px) {
+  #page { grid-template-columns: 1fr; gap: 0; }
+  aside { position: static; text-align: left; display: flex; align-items: center; gap: 16px; }
+  .avatar { width: 56px; height: 56px; font-size: 2rem; margin: 8px 0 0; }
+  aside nav ul { display: flex; gap: 16px; margin: 8px 0 0; }
+  aside nav li { margin: 0; }
+  .rows { grid-template-columns: 1fr; gap: 6px; }
+  .rows > .portal { margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #meteor-shower { display: none; }
+  .rainbow:hover { animation: none; }
+}
