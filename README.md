@@ -5,7 +5,7 @@ Hi, I'm Faris, an electrical engineer at Stanford. This is the source code for m
 ## What's here
 
 - **Projects**: things I've built, with links to code and demos
-- **Writing**: posts about my projects and what I'm learning in electrical engineering
+- **Blog**: posts about my projects and what I'm learning in electrical engineering
 - **About**: a bit about me and how to get in touch
 
 ## Built with
