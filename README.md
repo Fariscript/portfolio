@@ -1,6 +1,6 @@
 # Faris Alghamdi ⚡
 
-Hi, I'm Faris, an electrical engineer at Stanford. This is the source code for my personal portfolio, where I share my projects and write about what I'm building and learning.
+Hi, I'm Faris, an electrical engineering student at Stanford. This is the source code for my personal portfolio, where I share my projects and write about what I'm building and learning.
 
 ## What's here
 
